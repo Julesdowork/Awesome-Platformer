@@ -38,10 +38,25 @@ public class PlayerMovement : MonoBehaviour
         if (h > 0)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
+            ChangeDirection(1);
         }
         else if (h < 0)
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
+            ChangeDirection(-1);
         }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        anim.SetInteger("Speed", Mathf.Abs((int) rb.velocity.x));
+    }
+
+    private void ChangeDirection(int direction)
+    {
+        Vector3 tempScale = transform.localScale;
+        tempScale.x = direction;
+        transform.localScale = tempScale;
     }
 }
