@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheckPos;
     public LayerMask groundLayer;
 
+    private bool isGrounded;
+    private bool jumped;
+    private float jumpPower = 5f;
+
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -19,27 +23,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Physics2D.Raycast(groundCheckPos.position, Vector2.down, 0.5f, groundLayer))
-        {
-            print("Collided with ground");
-        }
+        CheckIfGrounded();
+        PlayerJump();
     }
 
     void FixedUpdate()
     {
         PlayerWalk();
-    }
-
-    void OnCollisionEnter2D(Collision2D target)
-    {
-        //if (target.gameObject.CompareTag("Ground"))
-        //    print("Collided with the ground");
-    }
-
-    void OnTriggerEnter2D(Collider2D target)
-    {
-        //if (target.CompareTag("Ground"))
-        //    print("Collided with the ground");
     }
 
     private void PlayerWalk()
@@ -69,5 +59,36 @@ public class PlayerMovement : MonoBehaviour
         Vector3 tempScale = transform.localScale;
         tempScale.x = direction;
         transform.localScale = tempScale;
+    }
+
+    private void CheckIfGrounded()
+    {
+        isGrounded = Physics2D.Raycast(groundCheckPos.position, Vector2.down,
+            0.1f, groundLayer);
+
+        if (isGrounded)
+        {
+            // and we jumped before
+            if (jumped)
+            {
+                jumped = false;
+
+                anim.SetBool("Jump", false);
+            }
+        }
+    }
+
+    private void PlayerJump()
+    {
+        if (isGrounded)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                jumped = true;
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+
+                anim.SetBool("Jump", true);
+            }
+        }
     }
 }
