@@ -47,6 +47,34 @@ public class Snail : MonoBehaviour
         CheckCollision();
     }
 
+    void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.CompareTag(MyTags.BULLET_TAG))
+        {
+            if (CompareTag(MyTags.BEETLE_TAG))
+            {
+                anim.Play("Stunned");
+                canMove = false;
+                rb.velocity = new Vector2(0, 0);
+                StartCoroutine(Dead(0.4f));
+            }
+            else if (CompareTag(MyTags.SNAIL_TAG))
+            {
+                if (!stunned)
+                {
+                    anim.Play("Stunned");
+                    stunned = true;
+                    canMove = false;
+                    rb.velocity = new Vector2(0, 0);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
     private void CheckCollision()
     {
         RaycastHit2D leftHit = Physics2D.Raycast(leftCollision.position, Vector2.left, 0.1f, playerLayer);
