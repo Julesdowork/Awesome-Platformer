@@ -39,6 +39,19 @@ public class Bird : MonoBehaviour
     void Update()
     {
         Move();
+        DropEgg();
+    }
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.CompareTag(MyTags.BULLET_TAG))
+        {
+            anim.Play("BirdDead");
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            canMove = false;
+            StartCoroutine(Die());
+        }
     }
 
     private void Move()
@@ -65,5 +78,25 @@ public class Bird : MonoBehaviour
         Vector3 tempScale = transform.localScale;
         tempScale.x = direction;
         transform.localScale = tempScale;
+    }
+
+    private void DropEgg()
+    {
+        if (!attacked)
+        {
+            if (Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, playerLayer))
+            {
+                Instantiate(egg, new Vector3(transform.position.x,
+                    transform.position.y - 1f, transform.position.z), Quaternion.identity);
+                attacked = true;
+                anim.Play("BirdFly");
+            }
+        }
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
     }
 }
