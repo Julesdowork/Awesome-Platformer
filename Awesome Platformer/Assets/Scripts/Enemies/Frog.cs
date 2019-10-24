@@ -23,15 +23,25 @@ public class Frog : MonoBehaviour
         StartCoroutine(coroutineName);
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        if (animationFinished && animationStarted)
+        {
+            animationStarted = false;
+            // Sprite's position is being reset earlier than expected, so I moved this to AnimationFinished()
+            //transform.parent.position = transform.position;     // move parent object to sprite's location
+            //transform.localPosition = Vector3.zero;             // reset sprite's local position to (0,0,0) (may be redundant due to Idle animation)
+        }
     }
 
     IEnumerator Jump()
     {
         yield return new WaitForSeconds(Random.Range(1f, 4f));
+
+        animationStarted = true;
+        animationFinished = false;
+
+        timesJumped++;
 
         if (jumpLeft)
         {
@@ -39,7 +49,7 @@ public class Frog : MonoBehaviour
         }
         else
         {
-
+            anim.Play("FrogJumpRight");
         }
 
         StartCoroutine(coroutineName);
@@ -47,6 +57,22 @@ public class Frog : MonoBehaviour
 
     public void AnimationFinished()
     {
-        anim.Play("FrogIdleLeft");
+        animationFinished = true;
+        transform.parent.position = transform.position;     // move parent object to sprite's location
+
+        if (jumpLeft)
+            anim.Play("FrogIdleLeft");
+        else
+            anim.Play("FrogIdleRight");
+
+        if (timesJumped == 3)
+        {
+            timesJumped = 0;
+            Vector3 tempScale = transform.localScale;
+            tempScale.x *= -1;
+            transform.localScale = tempScale;
+
+            jumpLeft = !jumpLeft;
+        }
     }
 }
