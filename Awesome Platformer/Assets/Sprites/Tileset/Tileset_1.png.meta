@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 21300000
     second: Tileset_1_0
+  - first:
+      213: -4909113661136130645
+    second: Tree 1
+  - first:
+      213: 1762388525989174176
+    second: Tileset_1_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -97,10 +103,52 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Tree 1
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 204
+        width: 188
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed29c07c4397484791709623dfeff58
+      internalID: -4909113661136130645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_1_1
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 136
+        width: 130
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ff79f399002fc948ac6f17ed5c83f9c
+      internalID: 1762388525989174176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 04e06278623e5ef45bd3ded6182838f2
     internalID: 0
     vertices: []
     indices: 
