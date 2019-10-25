@@ -13,6 +13,7 @@ TagManager:
   - Frog
   - Coin
   - Bonus Block
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 1740718489
     locked: 0
   - name: Player
     uniqueID: 3674490207
