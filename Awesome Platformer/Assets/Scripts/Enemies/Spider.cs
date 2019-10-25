@@ -36,6 +36,11 @@ public class Spider : MonoBehaviour
             StartCoroutine(Die());
             StopCoroutine(coroutineName);
         }
+
+        if (target.CompareTag(MyTags.PLAYER_TAG))
+        {
+            target.GetComponent<PlayerHealth>().DealDamage();
+        }
     }
 
     private void Move()

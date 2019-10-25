@@ -16,7 +16,7 @@ public class Snail : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -113,8 +113,7 @@ public class Snail : MonoBehaviour
             {
                 if (!stunned)
                 {
-                    // Apply damage to player
-                    print("Damage left");
+                    leftHit.collider.gameObject.GetComponent<PlayerHealth>().DealDamage();
                 }
                 else
                 {
@@ -133,8 +132,7 @@ public class Snail : MonoBehaviour
             {
                 if (!stunned)
                 {
-                    // Apply damage to player
-                    print("Damage right");
+                    rightHit.collider.gameObject.GetComponent<PlayerHealth>().DealDamage();
                 }
                 else
                 {

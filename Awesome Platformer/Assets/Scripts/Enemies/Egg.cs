@@ -8,7 +8,7 @@ public class Egg : MonoBehaviour
     {
         if (target.gameObject.CompareTag(MyTags.PLAYER_TAG))
         {
-            // Damage the player
+            target.gameObject.GetComponent<PlayerHealth>().DealDamage();
         }
         gameObject.SetActive(false);
     }

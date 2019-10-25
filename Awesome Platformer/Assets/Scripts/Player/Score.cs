@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
     private Text coinText;
     private AudioSource audioSource;
 
-    private void Awake()
+    void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
         coinText = GameObject.Find("Coins Text").GetComponent<Text>();
     }
 
-    private void OnTriggerEnter2D(Collider2D target)
+    void OnTriggerEnter2D(Collider2D target)
     {
         if (target.CompareTag(MyTags.COIN_TAG))
         {
