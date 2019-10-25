@@ -4331,24 +4331,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1433594655 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1182332640928346516, guid: 4f3e9eda5518e9149a81790af5e4b090,
-    type: 3}
-  m_PrefabInstance: {fileID: 1182332641476665090}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1433594665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433594655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2bd8493dbafb44fbfb4ff151f0c3c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1454717593
 GameObject:
   m_ObjectHideFlags: 0
@@ -7593,6 +7575,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bonus Block
       objectReference: {fileID: 0}
+    - target: {fileID: 1511535263745325159, guid: 171727389ff1d1c4baa84215613e3d12,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bonus Block
+      objectReference: {fileID: 0}
     - target: {fileID: 1511535263745325161, guid: 171727389ff1d1c4baa84215613e3d12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7648,6 +7635,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8408483849861351216, guid: 171727389ff1d1c4baa84215613e3d12,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 171727389ff1d1c4baa84215613e3d12, type: 3}
 --- !u!1001 &2322827926440595899
@@ -7665,7 +7657,7 @@ PrefabInstance:
     - target: {fileID: 2322827925592520380, guid: 5a3b7b2a20ca84c468086fa3e36333f0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2322827925592520374, guid: 5a3b7b2a20ca84c468086fa3e36333f0,
         type: 3}

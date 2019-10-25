@@ -12,6 +12,7 @@ TagManager:
   - Water
   - Frog
   - Coin
+  - Bonus Block
   layers:
   - Default
   - TransparentFX

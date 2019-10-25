@@ -31,4 +31,14 @@ public class Score : MonoBehaviour
             audioSource.Play();
         }
     }
+
+    void OnCollisionEnter2D(Collision2D target)
+    {
+        if (target.gameObject.CompareTag(MyTags.BONUS_TAG))
+        {
+            scoreCount += 5;
+            coinText.text = "x" + scoreCount;
+            audioSource.Play();
+        }
+    }
 }
